@@ -16,29 +16,52 @@ def cpfs_reader():
         for row in cpfsCSV:
             return row[1]
 
-def random_date():
-    # day = random.randint(1,31)
-    # month = random.randint(1,12)
-    year = random.randint(1980, 2019)
-
+def random_year():
+    year = random.randint(1960, 2001)
     return year
-        
 
-# nomes_reader()
-# cpfs_reader()
-# for x in range(50):
-#     random_date()
+def random_day():
+    day = random.randint(1, 31)
+    return day
+
+def random_month():
+    month = random.randint(1, 12)
+    return month
+
+def random_tel1():
+    tel = random.randint(100, 999)
+    return 3000 + int(tel)
+
+def random_tel2():
+    tel2 = random.randint(1000, 9999)
+    return tel2
 
 person = []
-date = []
+year = []
+cpf = []
+month = []
+day = []
+age = []
+tel1 = []
+tel2 = []
+teste = 1
+
 for k in range(51):
     person.append(nomes_reader())
-    date.append(random_date())
+    year.append(random_year())
+    cpf.append(cpfs_reader())
+    month.append(random_month())
+    day.append(random_day())
+    age.append(2019 - int(year[k]))
+    tel1.append(random_tel1())
+    tel2.append(random_tel2())
 
-teste = 1
 while teste <= 50:
-    print(person[teste])
-    print(date[teste])
+    print("-----------------CADASTRO NÚMERO",teste,"----------------------")
+    print("Nome:",person[teste])
+    print("Nascimento:",day[teste],"/",month[teste],"/",year[teste])
+    print("Idade:",age[teste])
+    print("Número de Telefone:",tel1[teste],":",tel2[teste])
     teste += 1
 
     
