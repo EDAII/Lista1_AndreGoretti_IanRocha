@@ -16,6 +16,14 @@ def cpfs_reader():
         for row in cpfsCSV:
             return row[1]
 
+def random_city():
+    with open('cidades.csv') as csvfile:
+        cidadesCSV = csv.reader(csvfile, delimiter=',')
+        aux = random.randint(1, 20)
+        for x in cidadesCSV:
+            if str(aux) == x[0]:
+                return x[1]
+
 def random_year():
     year = random.randint(1960, 2001)
     return year
@@ -44,6 +52,7 @@ day = []
 age = []
 tel1 = []
 tel2 = []
+city = []
 teste = 1
 
 for k in range(51):
@@ -55,13 +64,16 @@ for k in range(51):
     age.append(2019 - int(year[k]))
     tel1.append(random_tel1())
     tel2.append(random_tel2())
+    city.append(random_city())
 
 while teste <= 50:
     print("-----------------CADASTRO NÚMERO",teste,"----------------------")
     print("Nome:",person[teste])
+    print("CPF:", cpf[teste])
     print("Nascimento:",day[teste],"/",month[teste],"/",year[teste])
     print("Idade:",age[teste])
     print("Número de Telefone:",tel1[teste],":",tel2[teste])
+    print("Cidade:",city[teste])
     teste += 1
 
     
