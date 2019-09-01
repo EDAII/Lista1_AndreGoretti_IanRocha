@@ -77,6 +77,18 @@ while teste <= 50:
     print("Cidade:",city[teste])
     teste += 1
 
+def BuscaNome(nome):    
+    achou = False
+    i = 0
+    while i < 50:
+        if person[i] == nome:
+            achou = True
+            return i
+            break
+        i += 1
+        print(person[i])
+        #print(nome)
+
 window = Tk()
  
 window.title("Agenda")
@@ -92,9 +104,46 @@ EntradaN = Entry(window,width=10)
 EntradaN.grid(column=2, row=0)
  
 def clicked():
+
+    nomeB = EntradaN.get()
+
+    i = BuscaNome(nomeB) 
+
+    print(i)   
+
     Contato.config(state="normal")
 
-    Contato.insert(INSERT, "apertei\n")
+    if(i != None):
+        Contato.insert(INSERT, "Nome: ")
+        Contato.insert(INSERT, person[i])
+        Contato.insert(INSERT, "\n ")
+
+        Contato.insert(INSERT, "CPF: ")
+        Contato.insert(INSERT, cpf[i])
+        Contato.insert(INSERT, "\n ")
+
+        Contato.insert(INSERT, "idade: ")
+        Contato.insert(INSERT, age[i])
+        Contato.insert(INSERT, "\n ") 
+
+        Contato.insert(INSERT, "Cidade: ")
+        Contato.insert(INSERT, city[i])
+        Contato.insert(INSERT, "\n ") 
+
+        Contato.insert(INSERT, "Numero Telefone: ")
+        Contato.insert(INSERT, tel1[i])
+        Contato.insert(INSERT, "-")
+        Contato.insert(INSERT, tel2[i])
+        Contato.insert(INSERT, "\n ") 
+
+        Contato.insert(INSERT, "Nascimento: ")
+        Contato.insert(INSERT, day[i])
+        Contato.insert(INSERT, "/")
+        Contato.insert(INSERT, month[i])
+        Contato.insert(INSERT, "/")
+        Contato.insert(INSERT, year[i])           
+
+    #Contato.insert(INSERT, )
  
 btn = Button(window, text="Buscar", command=clicked)
  
