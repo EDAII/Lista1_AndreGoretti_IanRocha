@@ -92,25 +92,27 @@ window = Tk()
  
 window.title("Agenda")
  
-#window.geometry('350x200')
+window.geometry('470x550')
  
 lblN = Label(window, text="Nome")
  
-lblN.grid(column=0, row=1)
+lblN.place(x = 1, y = 15)
 
 lblA = Label(window, text="Idade")
  
-lblA.grid(column=0, row=2)
+lblA.place(x = 1, y = 40)
  
 EntradaN = Entry(window,width=10)
  
-EntradaN.grid(column=1, row=1)
+EntradaN.place(x = 50, y = 15)
 
 EntradaA = Entry(window,width=10)
  
-EntradaA.grid(column=1, row=2)
+EntradaA.place(x = 50, y = 40)
  
 def clickedN():
+
+    Contato.delete('1.0', END)
 
     nomeB = EntradaN.get()
 
@@ -153,6 +155,8 @@ def clickedN():
     #Contato.insert(INSERT, )
 
 def clickedA():
+
+     Contato.delete('1.0', END)
 
      Contato.config(state="normal")
 
@@ -200,13 +204,13 @@ btnNome = Button(window, text="Buscar", command=clickedN)
 
 btnAge = Button(window, text="Buscar", command=clickedA)
 
-btnAge.grid(column=2, row=2)
+btnAge.place(x = 140, y = 40)
  
-btnNome.grid(column=2, row=1)
+btnNome.place(x = 140, y = 10)
 
 Contato = Text(window, width = 30, height = 30)
 
-Contato.grid(column=4, row=0)
+Contato.place(x = 220, y = 0)
 
 Contato.config(state="disabled")
  
