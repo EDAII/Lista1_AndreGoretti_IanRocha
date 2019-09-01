@@ -80,13 +80,12 @@ while teste <= 50:
 def BuscaNome(nome):    
     achou = False
     i = 0
-    while i < 50:
+    while i <= 50:
         if person[i] == nome:
             achou = True
             return i
             break
         i += 1
-        print(person[i])
         #print(nome)
 
 window = Tk()
@@ -95,15 +94,23 @@ window.title("Agenda")
  
 #window.geometry('350x200')
  
-lbl = Label(window, text="Nome")
+lblN = Label(window, text="Nome")
  
-lbl.grid(column=1, row=0)
+lblN.grid(column=0, row=1)
+
+lblA = Label(window, text="Idade")
+ 
+lblA.grid(column=0, row=2)
  
 EntradaN = Entry(window,width=10)
  
-EntradaN.grid(column=2, row=0)
+EntradaN.grid(column=1, row=1)
+
+EntradaA = Entry(window,width=10)
  
-def clicked():
+EntradaA.grid(column=1, row=2)
+ 
+def clickedN():
 
     nomeB = EntradaN.get()
 
@@ -144,14 +151,62 @@ def clicked():
         Contato.insert(INSERT, year[i])           
 
     #Contato.insert(INSERT, )
- 
-btn = Button(window, text="Buscar", command=clicked)
- 
-btn.grid(column=3, row=0)
 
-Contato = Text(window, width = 30)
+def clickedA():
 
-Contato.grid(column=0, row=0)
+     Contato.config(state="normal")
+
+     AgeB = int(EntradaA.get())
+     
+     j = 0
+     while(j <= 50):
+         
+         if age[j] == AgeB:
+            
+            Contato.insert(INSERT, "Nome: ")
+            Contato.insert(INSERT, person[j])
+            Contato.insert(INSERT, "\n ")
+
+            Contato.insert(INSERT, "CPF: ")
+            Contato.insert(INSERT, cpf[j])
+            Contato.insert(INSERT, "\n ")
+
+            Contato.insert(INSERT, "idade: ")
+            Contato.insert(INSERT, age[j])
+            Contato.insert(INSERT, "\n ") 
+
+            Contato.insert(INSERT, "Cidade: ")
+            Contato.insert(INSERT, city[j])
+            Contato.insert(INSERT, "\n ") 
+
+            Contato.insert(INSERT, "Numero Telefone: ")
+            Contato.insert(INSERT, tel1[j])
+            Contato.insert(INSERT, "-")
+            Contato.insert(INSERT, tel2[j])
+            Contato.insert(INSERT, "\n ") 
+
+            Contato.insert(INSERT, "Nascimento: ")
+            Contato.insert(INSERT, day[j])
+            Contato.insert(INSERT, "/")
+            Contato.insert(INSERT, month[j])
+            Contato.insert(INSERT, "/")
+            Contato.insert(INSERT, year[j])
+            Contato.insert(INSERT, "\n")
+         j += 1        
+
+
+ 
+btnNome = Button(window, text="Buscar", command=clickedN)
+
+btnAge = Button(window, text="Buscar", command=clickedA)
+
+btnAge.grid(column=2, row=2)
+ 
+btnNome.grid(column=2, row=1)
+
+Contato = Text(window, width = 30, height = 30)
+
+Contato.grid(column=4, row=0)
 
 Contato.config(state="disabled")
  
