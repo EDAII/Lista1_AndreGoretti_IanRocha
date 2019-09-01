@@ -1,5 +1,6 @@
 import csv
 import random
+from tkinter import *
 
 def nomes_reader():
     with open('nomes.csv') as csvfile:
@@ -76,4 +77,34 @@ while teste <= 50:
     print("Cidade:",city[teste])
     teste += 1
 
-    
+window = Tk()
+ 
+window.title("Agenda")
+ 
+#window.geometry('350x200')
+ 
+lbl = Label(window, text="Nome")
+ 
+lbl.grid(column=1, row=0)
+ 
+EntradaN = Entry(window,width=10)
+ 
+EntradaN.grid(column=2, row=0)
+ 
+def clicked():
+    Contato.config(state="normal")
+
+    Contato.insert(INSERT, "apertei\n")
+ 
+btn = Button(window, text="Buscar", command=clicked)
+ 
+btn.grid(column=3, row=0)
+
+Contato = Text(window, width = 30)
+
+Contato.grid(column=0, row=0)
+
+Contato.config(state="disabled")
+ 
+window.mainloop()
+
