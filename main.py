@@ -83,6 +83,10 @@ lblN.place(x = 1, y = 15)
 lblA = Label(window, text="Idade")
  
 lblA.place(x = 1, y = 40)
+
+lblC = Label(window, text="Cidade")
+
+lblC.place(x = 1, y = 70)
  
 EntradaN = Entry(window,width=10)
  
@@ -91,6 +95,10 @@ EntradaN.place(x = 50, y = 15)
 EntradaA = Entry(window,width=10)
  
 EntradaA.place(x = 50, y = 40)
+
+EntradaC = Entry(window,width=10)
+
+EntradaC.place(x = 50, y = 70)
  
 def clickedN():
 
@@ -183,6 +191,51 @@ def clickedA():
             Contato.insert(INSERT, "/")
             Contato.insert(INSERT, year[j])
             Contato.insert(INSERT, "\n")
+         j += 1
+
+def clickedC():
+
+     Contato.delete('1.0', END)
+
+     Contato.config(state="normal")
+
+     Cidade = EntradaC.get()
+     
+     j = 0
+     while(j <= 50):
+         
+         if Cidade == city[j]:
+            Contato.insert(INSERT, "--------------------")
+            Contato.insert(INSERT, "\n ")
+            Contato.insert(INSERT, "Nome: ")
+            Contato.insert(INSERT, person[j])
+            Contato.insert(INSERT, "\n ")
+
+            Contato.insert(INSERT, "CPF: ")
+            Contato.insert(INSERT, cpf[j])
+            Contato.insert(INSERT, "\n ")
+
+            Contato.insert(INSERT, "idade: ")
+            Contato.insert(INSERT, age[j])
+            Contato.insert(INSERT, "\n ") 
+
+            Contato.insert(INSERT, "Cidade: ")
+            Contato.insert(INSERT, city[j])
+            Contato.insert(INSERT, "\n ") 
+
+            Contato.insert(INSERT, "Numero Telefone: ")
+            Contato.insert(INSERT, tel1[j])
+            Contato.insert(INSERT, "-")
+            Contato.insert(INSERT, tel2[j])
+            Contato.insert(INSERT, "\n ") 
+
+            Contato.insert(INSERT, "Nascimento: ")
+            Contato.insert(INSERT, day[j])
+            Contato.insert(INSERT, "/")
+            Contato.insert(INSERT, month[j])
+            Contato.insert(INSERT, "/")
+            Contato.insert(INSERT, year[j])
+            Contato.insert(INSERT, "\n")
          j += 1        
 
 def clickedG():
@@ -234,11 +287,15 @@ btnAge = Button(window, text="Buscar", command=clickedA)
 
 btnGeral = Button(window, text="Listar Todos Contatos", command=clickedG)
 
+btnCity = Button(window, text="Buscar", command=clickedC)
+
 btnAge.place(x = 140, y = 40)
  
 btnNome.place(x = 140, y = 10)
 
 btnGeral.place(x = 26, y = 430)
+
+btnCity.place(x = 140, y = 70)
 
 Contato = Text(window, width = 30, height = 30)
 
