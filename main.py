@@ -11,12 +11,6 @@ def nomes_reader():
             if auxs == x[0]:
                 return x[1]
 
-def cpfs_reader():
-    with open('cpfs.csv') as csvfile:
-        cpfsCSV = csv.reader(csvfile, delimiter=',')
-        for row in cpfsCSV:
-            return row[1]
-
 def random_city():
     with open('cidades.csv') as csvfile:
         cidadesCSV = csv.reader(csvfile, delimiter=',')
@@ -24,6 +18,15 @@ def random_city():
         for x in cidadesCSV:
             if str(aux) == x[0]:
                 return x[1]
+
+def random_cpf():
+    cpf1 = random.randint(100, 999)
+    cpf2 = random.randint(100, 999)
+    cpf3 = random.randint(100, 999)
+    cpf4 = random.randint(0,99)
+
+    cpf = str(cpf1) + "." + str(cpf2) + "." + str(cpf3) + "-" + str(cpf4)
+    return cpf
 
 def random_year():
     year = random.randint(1960, 2001)
@@ -59,24 +62,13 @@ teste = 1
 for k in range(51):
     person.append(nomes_reader())
     year.append(random_year())
-    cpf.append(cpfs_reader())
+    cpf.append(random_cpf())
     month.append(random_month())
     day.append(random_day())
     age.append(2019 - int(year[k]))
     tel1.append(random_tel1())
     tel2.append(random_tel2())
     city.append(random_city())
-
-while teste <= 50:
-    print("-----------------CADASTRO NÚMERO",teste,"----------------------")
-    print("Nome:",person[teste])
-    print("CPF:", cpf[teste])
-    print("Nascimento:",day[teste],"/",month[teste],"/",year[teste])
-    print("Idade:",age[teste])
-    print("Número de Telefone:",tel1[teste],":",tel2[teste])
-    print("Cidade:",city[teste])
-    teste += 1
-
 
 window = Tk()
  
@@ -113,6 +105,8 @@ def clickedN():
          
          if person[i] == Nome:
             
+            Contato.insert(INSERT, "--------------------")
+            Contato.insert(INSERT, "\n ")
             Contato.insert(INSERT, "Nome: ")
             Contato.insert(INSERT, person[i])
             Contato.insert(INSERT, "\n ")
@@ -158,7 +152,8 @@ def clickedA():
      while(j <= 50):
          
          if age[j] == AgeB:
-            
+            Contato.insert(INSERT, "--------------------")
+            Contato.insert(INSERT, "\n ")
             Contato.insert(INSERT, "Nome: ")
             Contato.insert(INSERT, person[j])
             Contato.insert(INSERT, "\n ")
@@ -190,15 +185,60 @@ def clickedA():
             Contato.insert(INSERT, "\n")
          j += 1        
 
+def clickedG():
 
+    Contato.delete('1.0', END)
+
+    Contato.config(state="normal")
+
+     
+    j = 0
+    while(j <= 50):
+
+        Contato.insert(INSERT, "--------------------") 
+        Contato.insert(INSERT, "\n ")      
+        Contato.insert(INSERT, "Nome: ")
+        Contato.insert(INSERT, person[j])
+        Contato.insert(INSERT, "\n ")
+
+        Contato.insert(INSERT, "CPF: ")
+        Contato.insert(INSERT, cpf[j])
+        Contato.insert(INSERT, "\n ")
+
+        Contato.insert(INSERT, "idade: ")
+        Contato.insert(INSERT, age[j])
+        Contato.insert(INSERT, "\n ") 
+
+        Contato.insert(INSERT, "Cidade: ")
+        Contato.insert(INSERT, city[j])
+        Contato.insert(INSERT, "\n ") 
+
+        Contato.insert(INSERT, "Numero Telefone: ")
+        Contato.insert(INSERT, tel1[j])
+        Contato.insert(INSERT, "-")
+        Contato.insert(INSERT, tel2[j])
+        Contato.insert(INSERT, "\n ") 
+
+        Contato.insert(INSERT, "Nascimento: ")
+        Contato.insert(INSERT, day[j])
+        Contato.insert(INSERT, "/")
+        Contato.insert(INSERT, month[j])
+        Contato.insert(INSERT, "/")
+        Contato.insert(INSERT, year[j])
+        Contato.insert(INSERT, "\n")
+        j += 1        
  
 btnNome = Button(window, text="Buscar", command=clickedN)
 
 btnAge = Button(window, text="Buscar", command=clickedA)
 
+btnGeral = Button(window, text="Listar Todos Contatos", command=clickedG)
+
 btnAge.place(x = 140, y = 40)
  
 btnNome.place(x = 140, y = 10)
+
+btnGeral.place(x = 26, y = 430)
 
 Contato = Text(window, width = 30, height = 30)
 
