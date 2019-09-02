@@ -33,3 +33,7 @@ Digite no seu terminal:
 #### Entre na pasta e execute o seguinte comando:
 
 > **python3 main.py**
+
+## Descrição:
+  Nosso trabalho consiste de uma agenda de contatos gerada aleatóriamente a cada vez que se abre o programa, utilizando para teste de buscas. 
+  No programa se pode buscar por nome, cidade e idade ou somente listar todos os contatos.
